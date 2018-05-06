@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Server;
 use Illuminate\Http\Request;
+use App\Http\Requests\ServerRequest;
 
 class ServerController extends Controller
 {
@@ -13,7 +15,9 @@ class ServerController extends Controller
      */
     public function index()
     {
-        return view('server');
+        $servers = Server::all();
+
+        return view('server', ['servers' => $servers]);
     }
 
     /**
@@ -29,12 +33,20 @@ class ServerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ServerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServerRequest $request)
     {
-        //
+        $server              = new Server();
+        $server->name        = $request->serverName;
+        $server->host        = $request->serverHost;
+        $server->location    = $request->serverLocation;
+        $server->limit       = $request->serverLimit;
+        $server->description = $request->serverDescription;
+        $server->save();
+
+        return redirect()->back()->with('status', 'Server added successfully!');
     }
 
     /**
@@ -62,13 +74,23 @@ class ServerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ServerRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServerRequest $request)
     {
-        //
+        print_r($request->all());
+        exit();
+        $server              = Server::find($id);
+        $server->name        = $request->serverName;
+        $server->host        = $request->serverHost;
+        $server->location    = $request->serverLocation;
+        $server->limit       = $request->serverLimit;
+        $server->description = $request->serverDescription;
+        $server->save();
+
+        return redirect()->back()->with('status', 'Server updated successfully!');
     }
 
     /**
