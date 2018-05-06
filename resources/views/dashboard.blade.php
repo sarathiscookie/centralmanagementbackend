@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
     <!-- Counts Section -->
     <section class="dashboard-counts section-padding">

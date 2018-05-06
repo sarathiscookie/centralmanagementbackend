@@ -17,6 +17,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::group(['middleware' => ['auth']], function () {
+    /*
+     |--------------------------------------------------------------------------
+     | Cart
+     |--------------------------------------------------------------------------
+     |
+     | Route for dashboard
+     |
+     */
+    /* Dashboard */
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+    /*
+     |--------------------------------------------------------------------------
+     | Server
+     |--------------------------------------------------------------------------
+     |
+     | Route for server
+     |
+     */
+    /* Dashboard */
+    Route::get('/server', 'ServerController@index')->name('server');
 });

@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('city', 255)->nullable();
             $table->string('state', 255)->nullable();
             $table->integer('country_id')->nullable()->unsigned();
-            $table->tinyInteger('status'); // 1 -> Active, 0-> Inactive
+            $table->boolean('active')->default(0); // 1 -> Active, 0-> Inactive
             $table->rememberToken();
             $table->timestamps();
 

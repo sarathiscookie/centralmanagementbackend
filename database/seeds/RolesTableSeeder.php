@@ -17,12 +17,12 @@ class RolesTableSeeder extends Seeder
         $data = [[
             'id' => 1,
             'role' => 'admin',
-            'status' => 1,
+            'active' => 1,
             'created_at' => Carbon::now()
         ], [
             'id' => 2,
             'role' => 'user',
-            'status' => 1,
+            'active' => 1,
             'created_at' => Carbon::now()
         ]];
 

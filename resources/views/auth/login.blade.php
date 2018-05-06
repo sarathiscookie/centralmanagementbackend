@@ -39,9 +39,12 @@
         <div class="container">
             <div class="form-outer text-center d-flex align-items-center">
                 <div class="form-inner">
-                    <div class="logo text-uppercase"><span></span><strong class="text-primary">Central System</strong></div>
+                    <div class="logo text-uppercase"><span></span><strong class="text-primary">Central Management</strong></div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
                     <form method="POST" action="{{ route('login') }}" class="text-left form-validate">
+
+                        {{csrf_field()}}
+
                         <div class="form-group-material">
                             <input id="email" type="email" class="input-material {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus data-msg="Please enter your email">
                             <label for="email" class="label-material">{{ __('E-Mail Address') }}</label>

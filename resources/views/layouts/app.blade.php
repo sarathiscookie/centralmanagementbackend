@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Central Management Backend') }}</title>
+    <title>{{ config('app.name') }}: @yield('title')</title>
 
     <!-- Default scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>

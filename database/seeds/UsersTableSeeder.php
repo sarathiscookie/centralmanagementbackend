@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'created_at' => Carbon::now(),
                 'password' => Hash::make('123456'),
-                'status' => 1,
+                'active' => 1,
             ]
         ];
 

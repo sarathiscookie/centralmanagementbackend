@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
                 <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="" class="navbar-brand">
-                        <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Central Management Dashboard</strong></div></a></div>
+                        <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Central Manage Dashboard</strong></div></a></div>
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     <!-- Notifications dropdown-->
                     <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
@@ -60,8 +60,17 @@
                             <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="{{ asset('storage/img/flags/16/FR.png') }}" alt="English" class="mr-2"><span>French                                                         </span></a></li>
                         </ul>
                     </li>
+
                     <!-- Log out-->
-                    <li class="nav-item"><a href="" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link logout" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <span class="d-none d-sm-inline-block">{{ __('Logout') }}</span><i class="fa fa-sign-out"></i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
