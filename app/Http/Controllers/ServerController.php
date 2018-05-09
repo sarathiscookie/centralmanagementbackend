@@ -15,9 +15,9 @@ class ServerController extends Controller
      */
     public function index()
     {
-        $servers = Server::all();
+        $servers = Server::paginate(5);
 
-        return view('server', ['servers' => $servers]);
+        return view('server.index', ['servers' => $servers]);
     }
 
     /**
@@ -46,7 +46,8 @@ class ServerController extends Controller
         $server->description = $request->serverDescription;
         $server->save();
 
-        return redirect()->back()->with('status', 'Server added successfully!');
+        return redirect()->route('server.index')
+            ->with('status', 'Server added successfully!');
     }
 
     /**
@@ -78,10 +79,8 @@ class ServerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ServerRequest $request)
+    public function update(ServerRequest $request, $id)
     {
-        print_r($request->all());
-        exit();
         $server              = Server::find($id);
         $server->name        = $request->serverName;
         $server->host        = $request->serverHost;
@@ -90,7 +89,8 @@ class ServerController extends Controller
         $server->description = $request->serverDescription;
         $server->save();
 
-        return redirect()->back()->with('status', 'Server updated successfully!');
+        return redirect()->route('server.index')
+            ->with('status', 'Server updated successfully!');
     }
 
     /**
@@ -101,6 +101,8 @@ class ServerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Server::destroy($id);
+        return redirect()->route('server.index')
+            ->with('status','Server deleted successfully');
     }
 }

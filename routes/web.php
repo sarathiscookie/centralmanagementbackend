@@ -37,12 +37,6 @@ Route::group(['middleware' => ['auth']], function () {
      | Route for server listing, add, edit and delete
      |
      */
-    /* Server update */
-    Route::post('/server/update', 'ServerController@update')->name('server.update');
-
-    /* Server listing */
-    Route::get('/server', 'ServerController@index')->name('server');
-
-    /* Server store */
-    Route::post('/server', 'ServerController@store')->name('server.store');
+    /* Server resource */
+    Route::resource('server', 'ServerController');
 });
