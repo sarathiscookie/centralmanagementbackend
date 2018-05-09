@@ -65,7 +65,7 @@
         </div>
     </section>
     <!-- Header Section-->
-    <section class="dashboard-header section-padding">
+    {{--<section class="dashboard-header section-padding">
         <div class="container-fluid">
             <div class="row d-flex align-items-md-stretch">
                 <!-- To Do List-->
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>--}}
     <!-- Statistics Section-->
     <section class="statistics">
         <div class="container-fluid">

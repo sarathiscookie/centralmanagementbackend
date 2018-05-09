@@ -21,7 +21,12 @@
                 </li>
                 <li><a href="#serverdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-website"></i>Server </a>
                     <ul id="serverdropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="/server"><i class="icon-list"></i>Server List <div class="badge badge-info">10</div></a></li>
+                        <li><a href="/server"><i class="icon-list"></i>Server List
+                                @if(isset($serverCount))
+                                    <div class="badge badge-info"> {{ $serverCount }} </div>
+                                @endif
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{--<li><a href="index.html"> <i class="icon-home"></i>Home                             </a></li>

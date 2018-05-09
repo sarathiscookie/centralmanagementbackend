@@ -81,16 +81,19 @@ class ServerController extends Controller
      */
     public function update(ServerRequest $request, $id)
     {
-        $server              = Server::find($id);
-        $server->name        = $request->serverName;
-        $server->host        = $request->serverHost;
-        $server->location    = $request->serverLocation;
-        $server->limit       = $request->serverLimit;
-        $server->description = $request->serverDescription;
-        $server->save();
+        if(isset($request->updateServer)) {
+            $server              = Server::find($id);
+            $server->name        = $request->serverName;
+            $server->host        = $request->serverHost;
+            $server->location    = $request->serverLocation;
+            $server->limit       = $request->serverLimit;
+            $server->description = $request->serverDescription;
+            $server->save();
 
-        return redirect()->route('server.index')
-            ->with('status', 'Server updated successfully!');
+            session()->flash('status', 'Successfully updated server details');
+            return response()->json(['response' => 'success'], 200);
+        }
+        return response()->json(['error' => 'Warning! Better check yourself, you are not looking too good.'], 422);
     }
 
     /**
@@ -101,8 +104,12 @@ class ServerController extends Controller
      */
     public function destroy($id)
     {
-        Server::destroy($id);
-        return redirect()->route('server.index')
-            ->with('status','Server deleted successfully');
+        if($id) {
+            Server::destroy($id);
+
+            session()->flash('status', 'Deleted server details successfully');
+            return response()->json(['response' => 'success'], 200);
+        }
+        return response()->json(['error' => 'Warning! Better check yourself, you are not looking too good.'], 422);
     }
 }

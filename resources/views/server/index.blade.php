@@ -45,6 +45,8 @@
                                 </div>
                             @endif
 
+                            <div id="warning"></div>
+
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover table-bordered">
                                     <thead>
@@ -65,15 +67,11 @@
                                             <td>{{ $server->name }}</td>
                                             <td>{{ $server->host }}</td>
                                             <td>{{ $server->location }}</td>
-                                            <td>{{ $server->description }}</td>
                                             <td>{{ $server->limit }}</td>
-                                            <td>
+                                            <td>{{ $server->description }}</td>
+                                            <td data-del="{{ $server->id }}">
                                                 <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#updateServerModal_{{ $server->id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                                <form action="{{action('ServerController@destroy', $server->id)}}" method="post">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                                </form>
+                                                <button type="button" class="btn btn-danger deleteServer"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
 
@@ -81,45 +79,40 @@
                                         <div id="updateServerModal_{{ $server->id }}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true" class="modal fade text-left">
                                             <div role="document" class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="{{ action('ServerController@update', ['id' => $server->id]) }}" method="post">
+                                                    <div class="modal-header">
+                                                        <h5 id="createServerHeading" class="modal-title">Update Server</h5>
+                                                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                                    </div>
 
-                                                        @csrf
-                                                        <input name="_method" type="hidden" value="PATCH">
+                                                    <div id="errors"></div>
 
-                                                        <div class="modal-header">
-                                                            <h5 id="createServerHeading" class="modal-title">Update Server</h5>
-                                                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Server Name</label>
+                                                            <input type="text" name="serverName" id="updateServerName_{{ $server->id }}" placeholder="Enter server name" class="form-control" value="{{ $server->name }}">
                                                         </div>
-
-                                                        <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label>Server Name</label>
-                                                                <input type="text" name="serverName" id="serverName" placeholder="Enter server name" class="form-control" value="{{ $server->name }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Host</label>
-                                                                <input type="text" name="serverHost" id="serverHost" placeholder="Enter host" class="form-control" value="{{ $server->host }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Location</label>
-                                                                <input type="text" name="serverLocation" id="serverLocation" placeholder="Enter location" class="form-control" value="{{ $server->location }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>VPN Server Limit</label>
-                                                                <input type="text" name="serverLimit" id="serverLimit" placeholder="Enter limit" class="form-control" value="{{ $server->limit }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Description</label>
-                                                                <textarea name="serverDescription" id="serverDescription" class="form-control" rows="3" placeholder="Description...">{{ $server->description }}</textarea>
-                                                            </div>
+                                                        <div class="form-group">
+                                                            <label>Host</label>
+                                                            <input type="text" name="serverHost" id="updateServerHost_{{ $server->id }}" placeholder="Enter host" class="form-control" value="{{ $server->host }}">
                                                         </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                                                            <input type="submit" class="btn btn-primary" value="Update Server">
+                                                        <div class="form-group">
+                                                            <label>Location</label>
+                                                            <input type="text" name="serverLocation" id="updateServerLocation_{{ $server->id }}" placeholder="Enter location" class="form-control" value="{{ $server->location }}">
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label>VPN Server Limit</label>
+                                                            <input type="text" name="serverLimit" id="updateServerLimit_{{ $server->id }}" placeholder="Enter limit" class="form-control" value="{{ $server->limit }}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <textarea name="serverDescription" id="updateServerDescription_{{ $server->id }}" class="form-control" rows="3" placeholder="Description...">{{ $server->description }}</textarea>
+                                                        </div>
+                                                    </div>
 
-                                                    </form>
+                                                    <div class="modal-footer">
+                                                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                                        <button type="button" data-id="{{ $server->id }}" class="btn btn-primary updateServer" value="updateServer">Update</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

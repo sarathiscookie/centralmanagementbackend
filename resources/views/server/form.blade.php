@@ -10,23 +10,46 @@
     <div class="modal-body">
         <div class="form-group">
             <label>Server Name</label>
-            <input type="text" name="serverName" id="serverName" placeholder="Enter server name" class="form-control">
+            <input type="text" name="serverName" id="serverName" placeholder="Enter server name" class="form-control {{ $errors->has('serverName') ? ' is-invalid' : '' }}" maxlength="150">
+
+            @if ($errors->has('serverName'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('serverName') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>Host</label>
-            <input type="text" name="serverHost" id="serverHost" placeholder="Enter host" class="form-control">
+            <input type="text" name="serverHost" id="serverHost" placeholder="Enter host" class="form-control {{ $errors->has('serverHost') ? ' is-invalid' : '' }}" maxlength="150">
+
+            @if ($errors->has('serverHost'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('serverHost') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>Location</label>
-            <input type="text" name="serverLocation" id="serverLocation" placeholder="Enter location" class="form-control">
+            <input type="text" name="serverLocation" id="serverLocation" placeholder="Enter location" class="form-control {{ $errors->has('serverLocation') ? ' is-invalid' : '' }}" maxlength="150">
+
+            @if ($errors->has('serverHost'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('serverLocation') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>VPN Server Limit</label>
-            <input type="text" name="serverLimit" id="serverLimit" placeholder="Enter limit" class="form-control">
+            <input type="number" name="serverLimit" id="serverLimit" placeholder="Enter limit" class="form-control {{ $errors->has('serverLimit') ? ' is-invalid' : '' }}" maxlength="150">
+            @if ($errors->has('serverHost'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('serverLimit') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>Description</label>
-            <textarea name="serverDescription" id="serverDescription" class="form-control" rows="3" placeholder="Description..."></textarea>
+            <textarea name="serverDescription" id="serverDescription" class="form-control" rows="3" placeholder="Description..." maxlength="500"></textarea>
         </div>
     </div>
 

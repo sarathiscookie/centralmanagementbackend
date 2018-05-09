@@ -24,12 +24,12 @@ mix.styles([
 mix.scripts([
     'resources/assets/plugins/popper.js/umd/popper.min.js',
     'resources/assets/plugins/jquery.cookie/jquery.cookie.js',
-    'resources/assets/plugins/chart.js/Chart.min.js',
+    /*'resources/assets/plugins/chart.js/Chart.min.js',*/
     'resources/assets/plugins/jquery-validation/jquery.validate.min.js',
     'resources/assets/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'
 ], 'public/js/plugins.js').version();
 
-/* Scripts and Styles for each page */
+/* Scripts and Styles for each page from this theme */
 mix.styles([
     'resources/assets/css/fontastic.css',
     'resources/assets/css/grasp_mobile_progress_circle-1.0.0.min.css',
@@ -39,6 +39,15 @@ mix.styles([
 
 mix.scripts([
     'resources/assets/js/grasp_mobile_progress_circle-1.0.0.min.js',
-    'resources/assets/js/charts-home.js',
+    /*'resources/assets/js/charts-home.js',*/
     'resources/assets/js/front.js'
 ], 'public/js/allTheme.js').version();
+
+/* Scripts and Styles for each module */
+/*mix.styles([
+    'resources/assets/css/custom.css'
+], 'public/css/all.css').version();*/
+
+mix.scripts([
+    'resources/assets/js/module/server.js'
+], 'public/js/all.js').version();

@@ -17,8 +17,11 @@
     <!-- Plugin scripts -->
     <script src="{{ mix('js/plugins.js') }}" defer></script>
 
-    <!-- Each page scripts -->
+    <!-- Each page scripts from this theme -->
     <script src="{{ mix('js/allTheme.js') }}" defer></script>
+
+    <!-- Each module core scripts -->
+    <script src="{{ mix('js/all.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -30,8 +33,11 @@
     <!-- Plugin styles -->
     <link href="{{ mix('css/plugins.css') }}" rel="stylesheet">
 
-    <!-- Each page styles -->
+    <!-- Each page styles from this theme -->
     <link href="{{ mix('css/allTheme.css') }}" rel="stylesheet">
+
+    <!-- Each module core styles -->
+    {{--<link href="{{ mix('css/all.css') }}" rel="stylesheet">--}}
 </head>
 <body>
     <div id="app">

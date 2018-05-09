@@ -24,7 +24,11 @@ class ServerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'serverName'        => 'required|max:150',
+            'serverHost'        => 'required|max:150',
+            'serverLocation'    => 'required|max:150',
+            'serverLimit'       => 'required|numeric|max:150',
+            'serverDescription' => 'max:500',
         ];
     }
 }
