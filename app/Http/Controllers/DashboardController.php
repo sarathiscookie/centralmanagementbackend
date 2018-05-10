@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Server;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,12 +15,20 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        /* Server count */
         $serverCount = 0;
         $server = Server::count();
         if($server > 0) {
             $serverCount = $server;
         }
-        return view('dashboard', ['serverCount' => $serverCount]);
+
+        /* User count */
+        $userCount = 0;
+        $user = User::count();
+        if($user > 0) {
+            $userCount = $user;
+        }
+        return view('dashboard', ['serverCount' => $serverCount, 'userCount' => $userCount]);
     }
 
     /**
