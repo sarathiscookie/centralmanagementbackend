@@ -39,4 +39,15 @@ Route::group(['middleware' => ['auth']], function () {
      */
     /* Server resource */
     Route::resource('server', 'ServerController');
+
+    /*
+     |--------------------------------------------------------------------------
+     | User
+     |--------------------------------------------------------------------------
+     |
+     | Route for user listing, add, edit and delete
+     |
+     */
+    /* User resource */
+    Route::resource('user', 'UserController');
 });

@@ -49,5 +49,6 @@ mix.scripts([
 ], 'public/css/all.css').version();*/
 
 mix.scripts([
-    'resources/assets/js/module/server.js'
+    'resources/assets/js/module/server.js',
+    'resources/assets/js/module/user.js'
 ], 'public/js/all.js').version();

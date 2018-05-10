@@ -1,14 +1,6 @@
 /**
  * Created by php on 09-May-18.
  */
-
-
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 18-08-2017
- * Time: 10:01
- */
 $(function () {
     /* Checking for the CSRF token */
     $.ajaxSetup({
@@ -70,7 +62,7 @@ $(function () {
             });
     });
 
-    /* Delete server detaisl */
+    /* Delete server details */
     $("body").on("click", ".deleteServer", function(e) {
         e.preventDefault();
         var delId  = $(this).parent().data("del");

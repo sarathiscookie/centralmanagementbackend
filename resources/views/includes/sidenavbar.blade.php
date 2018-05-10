@@ -16,7 +16,7 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="#userdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>User </a>
                     <ul id="userdropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="#"><i class="icon-list"></i>User List <div class="badge badge-info">5</div></a></li>
+                        <li><a href="/user"><i class="icon-list"></i>User List <div class="badge badge-info">5</div></a></li>
                     </ul>
                 </li>
                 <li><a href="#serverdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-website"></i>Server </a>
